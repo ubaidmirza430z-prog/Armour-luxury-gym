@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+:root {
+  /* ==========================================================================
+     PROMPT #2 SPECIFICATION: BRAND COLOR SYSTEM
+     --brand-black: #080808
+     --brand-surface: #111111
+     --brand-gold: #D4AF37
+     --brand-white: #FFFFFF
+     --brand-muted: #A5A5A5
+     --brand-border: #292929
+     ========================================================================== */
+  --brand-black: #080808;
+  --brand-surface: #111111;
+  --brand-gold: #D4AF37;
+  --brand-white: #FFFFFF;
+  --brand-muted: #A5A5A5;
+  --brand-border: #292929;
+
+  /* Aliases for backwards compatibility & clean utility tokens */
+  --bg-primary: var(--brand-black);
+  --bg-secondary: var(--brand-surface);
+  --bg-tertiary: #161616;
+  --gold: var(--brand-gold);
+  --gold-hover: #E5C358;
+  --gold-subtle: rgba(212, 175, 55, 0.1);
+  --gold-border: rgba(212, 175, 55, 0.35);
+  --text-primary: var(--brand-white);
+  --text-secondary: var(--brand-muted);
+  --text-muted: #6B6B6B;
+  --border: var(--brand-border);
+  --border-subtle: #1C1C1C;
+
+  /* Typography Families:
+     Editorial Serif for major headlines (Cinzel / Cormorant Garamond)
+     Clean modern Sans-Serif for body, navigation, buttons, labels (Plus Jakarta Sans)
+  */
+  --font-serif: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: var(--font-serif);
+  --font-body: var(--font-sans);
+
+  /* Spatial Constraints */
+  --container-max-width: 80rem; /* 1280px */
+}
+
+/* Base resets & smooth rendering */
+html {
+  background-color: var(--brand-black);
+  color: var(--brand-white);
+  font-family: var(--font-sans);
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--brand-black);
+  color: var(--brand-white);
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reusable Typography Tokens */
+.font-display,
+.font-serif-headline {
+  font-family: var(--font-serif);
+}
+
+.font-body,
+.font-sans-ui {
+  font-family: var(--font-sans);
+}
+
+/* Cinematic high-contrast editorial serif headline - engineered for 320px to 430px mobile screens without clipping */
+.heading-hero {
+  font-family: var(--font-serif);
+  font-size: clamp(1.65rem, 6.8vw, 4.25rem);
+  line-height: 1.12;
+  letter-spacing: 0.02em;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: manual;
+  max-width: 100%;
+}
+
+.heading-section {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 4.8vw, 2.35rem);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  word-break: normal;
+  max-width: 100%;
+}
+
+.heading-card {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.35;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+/* Refined section kicker / eyebrow in clean modern sans */
+.text-kicker {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brand-gold);
+}
+
+/* Subtle luxury hairlines */
+.border-brand {
+  border-color: var(--brand-border);
+}
+
+.border-subtle {
+  border-color: var(--brand-border);
+}
+
+.bg-canvas {
+  background-color: var(--brand-black);
+}
+
+.bg-surface {
+  background-color: var(--brand-surface);
+}
+
+/* Accessibility & Focus Rings */
+:focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   PROMPT #4: HERO ENTRANCE KEYFRAMES (400ms - 900ms subtle motion)
+   ========================================================================== */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-hero-eyebrow {
+  animation: heroFadeUp 500ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-hero-headline {
+  animation: heroFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 120ms forwards;
+  opacity: 0;
+}
+
+.animate-hero-prose {
+  animation: heroFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 240ms forwards;
+  opacity: 0;
+}
+
+.animate-hero-cta {
+  animation: heroFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 360ms forwards;
+  opacity: 0;
+}
+
+.animate-hero-3d {
+  animation: heroFadeIn 850ms cubic-bezier(0.16, 1, 0.3, 1) 420ms forwards;
+  opacity: 0;
+}
+
+/* Accessible Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-hero-eyebrow,
+  .animate-hero-headline,
+  .animate-hero-prose,
+  .animate-hero-cta,
+  .animate-hero-3d {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

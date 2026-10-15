@@ -1,0 +1,6 @@
+{
+  "name": "Armour Luxury Gym",
+  "description": "Official digital foundation for Armour Luxury Gym. A dark, cinematic, and high-performance luxury fitness destination.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
