@@ -28,7 +28,7 @@ jobs:
         
 
       - name: Install dependencies
-        npm install --legacy-peer-deps
+        npm install --legacy-peer-deps --package-lock=false
 
       - name: Build website
         run: npm run build
